@@ -18,8 +18,11 @@ namespace TodoListConsoleApp
 
             Button button1 = new Button(20, 15, 20, 4, "Show list");
             button1.Active = true;
+            button1.Render();
             Button button2 = new Button(50, 15, 20, 5, "Edit list");
+            button2.Render();
             Button button3 = new Button(80, 15, 20, 3, "Quit");
+            button3.Render();
 
             Console.ReadKey();
         }

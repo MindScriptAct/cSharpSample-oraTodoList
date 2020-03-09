@@ -6,16 +6,35 @@ namespace TodoListConsoleApp.Gui
 {
     class Button : GuiObject
     {
-        private string labelText;
+        private Frame frame;
+        private TextLine label;
+
+        private bool active;
+
+        public bool Active
+        {
+            get => active;
+            set
+            {
+                if (active != value)
+                {
+                    active = value;
+                    frame.SetFrameChar(active ? '#' : '+');
+                }
+            }
+        }
 
         public Button(int x, int y, int width, int height, string labelText) : base(x, y, width, height)
         {
-            this.labelText = labelText;
+            label = new TextLine(x + 1, y + 1 + (int)Math.Floor((double)(height - 3) / 2), width - 2, labelText, AlignType.Center);
+            frame = new Frame(x, y, width, height, '+');
         }
+
 
         public override void Render()
         {
-            throw new NotImplementedException();
+            frame.Render();
+            label.Render();
         }
     }
 }
